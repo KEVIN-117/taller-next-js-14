@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+
+    h1, h2, h3 {
+        @apply font-bold
+    }
+
+    h1 {
+        @apply text-4xl
+    }
+    
+    h2 {
+        @apply text-3xl
+    }
+
+    section {
+        @apply pt-8
+    }
+}
+
+@layer utilities {
+    .category__card {
+        @apply bg-white rounded-3xl pb-6 shrink-0 md:w-[300px] w-[300px] snap-center flex flex-col justify-center items-center
+        hover:shadow-xl hover:shadow-slate-900 transition-all cursor-pointer
+    }
+
+    .category__card--image {
+        @apply rounded-2xl w-full h-[400px] object-cover mx-auto mb-2 shadow-lg shadow-slate-900
+    }
+
+    .category__list {
+        @apply flex flex-1 gap-4 h-auto py-6 w-full snap-mandatory snap-x relative overflow-x-auto px-0
+
+    }
+
+    .product__list {
+        @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-6
+    }
+
+    .product__card {
+        @apply bg-white rounded-2xl cursor-pointer
+        hover:shadow-slate-900 hover:shadow-xl hover:scale-[1.05] active:scale-100 transition-all
+    }
+
+    .product__card--image {
+        @apply rounded-2xl w-full  object-cover mx-auto mb-2 shadow-lg shadow-slate-900
+    }
+
+    .cart__sidemenu {
+        @apply bg-white h-screen px-8 pt-12 pb-8 col-span-3 hidden md:flex flex-col justify-between
+    }
+}
+
+@layer components {
+    .container {
+        @apply max-w-[98%] md:max-w-[98%] mx-auto
+    }
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #fff0f2;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ec1253;
+    border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #c80846;
+}
