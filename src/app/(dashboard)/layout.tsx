@@ -1,7 +1,10 @@
 import { SideMenuCart } from "@/modules/cart";
 import { Toaster } from "sonner";
+import {getProducts} from "@/modules/products/actions/get-product";
+import {IProduct} from "@/modules/products/interfaces/product";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
+    const products = await getProducts() as IProduct[]
     return (
         <>
             <main className="">
@@ -13,7 +16,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 />
                 <div className="">
                     {/* CARRITO */}
-                    <SideMenuCart/>
+                    <SideMenuCart products={products}/>
                     {/* PAGINA PRINCIPAL */}
                     <div className="">
                         {children}

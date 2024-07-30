@@ -4,6 +4,8 @@ import { MenuItem } from "./MenuItem";
 import styles from "../styles/cart.module.css";
 import {Button} from "@nextui-org/button";
 import {MenuToggle} from "@/modules/cart/components/MenuToggle";
+import {getProducts} from "@/modules/products/actions/get-product";
+import {IProduct} from "@/modules/products/interfaces/product";
 
 const variants = {
     open: (height = 1000) => ({
@@ -26,7 +28,8 @@ const variants = {
 };
 
 
-export const Navigation = ({isOpen,toggle, products}:{isOpen: boolean, toggle:any, products: any[]}) => {
+export const Navigation = ({isOpen,toggle, products}:{isOpen: boolean, toggle:any, products: IProduct[]}) => {
+
     return (
         <motion.ul className={`${styles.card_ul} md:w-auto w-[90vw] space-y-5`}
                    variants={variants}
@@ -37,8 +40,8 @@ export const Navigation = ({isOpen,toggle, products}:{isOpen: boolean, toggle:an
                 <div className={"rounded-xl border border-slate-900 p-4 h-full backdrop-blur-md bg-slate-900/30"}>
                     {
                         products && products.length > 0? (
-                            itemIds.map(i => (
-                                <MenuItem i={i} key={i}/>
+                            products.map((product, i) => (
+                                <MenuItem product={product} i={i} key={i}/>
                             ))
                         ) : (
                             <h2 className={"text-center text-white font-bold"}>No hay productos en el carrito</h2>

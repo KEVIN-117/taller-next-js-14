@@ -1,11 +1,11 @@
 "use client"
 import { useRef } from 'react'
-import { Button } from '@nextui-org/button'
 import { motion, useCycle } from "framer-motion";
 import {useDimensions} from "@/modules/cart/hooks/useDimensions";
 import {Navigation} from "@/modules/cart/components/Navigation";
 import {MenuToggle} from "@/modules/cart/components/MenuToggle";
 import styles from "../styles/cart.module.css";
+import {IProduct} from "@/modules/products/interfaces/product";
 
 const sidebar = {
     open: (height = 1000) => ({
@@ -27,22 +27,11 @@ const sidebar = {
     }
 };
 
-export const SideMenuCart = () => {
+export const SideMenuCart = ({products}:{products: IProduct[]}) => {
     const [isOpen, toggleOpen] = useCycle(false, true);
     const containerRef = useRef(null);
     const { height } = useDimensions(containerRef);
-    const products = [
-        {
-            id: 1,
-            name: "Producto 1",
-            price: 10.00
-        },
-        {
-            id: 2,
-            name: "Producto 2",
-            price: 20.00
-        }
-    ]
+
     return (
         <div className={"relative"}>
             <motion.nav
@@ -53,7 +42,7 @@ export const SideMenuCart = () => {
                 className={styles.card_nav}
             >
                 <Navigation products={products} isOpen={isOpen} toggle={toggleOpen}/>
-                <div className={"mt-2 ml-2"}>
+                <div className={""}>
                     <MenuToggle isOpen={isOpen} toggle={() => toggleOpen()}/>
                 </div>
             </motion.nav>
